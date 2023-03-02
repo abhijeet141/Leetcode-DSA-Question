@@ -11,16 +11,27 @@ class Solution{
     //Function to return a list containing the union of the two arrays. 
     vector<int> findUnion(int a1[], int a2[], int n, int m)
     {
-        set<int>set;
-        for(int i = 0;i<n;i++){
-            set.insert(a1[i]);
-        }
-        for(int j=0;j<m;j++){
-            set.insert(a2[j]);
-        }
         vector<int>ans;
-        for(auto it:set){
-            ans.push_back(it);
+        // set<int>set;
+        // for(int i = 0;i<n;i++){
+        //     set.insert(a1[i]);
+        // }
+        // for(int j=0;j<m;j++){
+        //     set.insert(a2[j]);
+        // }
+        // for(auto it:set){
+        //     ans.push_back(it);
+        // }
+        // return ans;
+        map<int,int>mp;
+        for(int i= 0;i<n;i++){
+            mp[a1[i]] += 1;
+        }
+        for(int i = 0;i<m;i++){
+            mp[a2[i]] += 1;
+        }
+        for(auto it: mp){
+            ans.push_back(it.first);
         }
         return ans;
     }
