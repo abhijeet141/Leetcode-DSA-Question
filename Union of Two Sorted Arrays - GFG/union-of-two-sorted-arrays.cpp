@@ -23,17 +23,45 @@ class Solution{
         //     ans.push_back(it);
         // }
         // return ans;
-        map<int,int>mp;
-        for(int i= 0;i<n;i++){
-            mp[a1[i]] += 1;
+        // map<int,int>mp;
+        // for(int i= 0;i<n;i++){
+        //     mp[a1[i]] += 1;
+        // }
+        // for(int i = 0;i<m;i++){
+        //     mp[a2[i]] += 1;
+        // }
+        // for(auto it: mp){
+        //     ans.push_back(it.first);
+        // }
+        // return ans;
+        int i = 0, j = 0;
+        while(i < n and j < m){
+            if(a1[i]<=a2[j]){
+                if(ans.size() == 0 or ans.back()!=a1[i]){
+                    ans.push_back(a1[i]);
+                }
+                i++;
+            }
+            else{
+                 if(ans.size() == 0 or ans.back()!=a2[j]){
+                    ans.push_back(a2[j]);
+                }
+                j++;
+            }
         }
-        for(int i = 0;i<m;i++){
-            mp[a2[i]] += 1;
+        while(i<n){
+             if(ans.size() == 0 or ans.back()!=a1[i]){
+                    ans.push_back(a1[i]);
+                }
+                i++;
         }
-        for(auto it: mp){
-            ans.push_back(it.first);
+        while(j<m){
+             if(ans.size() == 0 or ans.back()!=a2[j]){
+                    ans.push_back(a2[j]);
+                }
+                j++;
         }
-        return ans;
+   return ans;
     }
 };
 
